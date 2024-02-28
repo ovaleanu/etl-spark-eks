@@ -59,8 +59,14 @@ variable "enable_vpc_endpoints" {
   type        = bool
 }
 
+variable "enable_amazon_prometheus" {
+  description = "Enable AWS Managed Prometheus service"
+  type        = bool
+  default     = true
+}
+
 variable "enable_yunikorn" {
-  default     = false
+  default     = true
   description = "Enable Apache YuniKorn Scheduler"
   type        = bool
 }

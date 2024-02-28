@@ -158,38 +158,38 @@ spec:
                                 effect: "NoSchedule"
                             labels:
                               version: 3.2.1
-                          #  annotations:
-                          #    yunikorn.apache.org/schedulingPolicyParameters: "placeholderTimeoutSeconds=30 gangSchedulingStyle=Hard"
-                          #    yunikorn.apache.org/task-group-name: "spark-driver"
+                            annotations:
+                              yunikorn.apache.org/schedulingPolicyParameters: "placeholderTimeoutSeconds=30 gangSchedulingStyle=Hard"
+                              yunikorn.apache.org/task-group-name: "spark-driver"
                           #    # minMember should match with driver and executor instances
                           #    # minResource cpu and memory should match with driver and executor cpu and memory
-                          #    yunikorn.apache.org/task-groups: |-
-                          #      [{
-                          #          "name": "spark-driver",
-                          #          "minMember": 1,
-                          #          "minResource": {
-                          #            "cpu": "1200m",
-                          #            "memory": "14Gi"
-                          #          },
-                          #          "nodeSelector": {
-                          #            "NodeGroupType": "SparkComputeOptimized",
-                          #            "karpenter.sh/capacity-type": "on-demand"
-                          #          },
-                          #          "tolerations": [{"key": "spark-compute-optimized", "operator": "Exists", "effect": "NoSchedule"}]
-                          #        },
-                          #        {
-                          #          "name": "spark-executor",
-                          #          "minMember": 4,
-                          #          "minResource": {
-                          #            "cpu": "1200m",
-                          #            "memory": "14Gi"
-                          #          },
-                          #          "nodeSelector": {
-                          #            "NodeGroupType": "SparkComputeOptimized",
-                          #            "karpenter.sh/capacity-type": "spot"
-                          #          },
-                          #          "tolerations": [{"key": "spark-compute-optimized", "operator": "Exists", "effect": "NoSchedule"}]
-                          #      }]
+                              yunikorn.apache.org/task-groups: |-
+                                [{
+                                    "name": "spark-driver",
+                                    "minMember": 1,
+                                    "minResource": {
+                                      "cpu": "1200m",
+                                      "memory": "14Gi"
+                                    },
+                                    "nodeSelector": {
+                                      "NodeGroupType": "SparkComputeOptimized",
+                                      "karpenter.sh/capacity-type": "on-demand"
+                                    },
+                                    "tolerations": [{"key": "spark-compute-optimized", "operator": "Exists", "effect": "NoSchedule"}]
+                                  },
+                                  {
+                                    "name": "spark-executor",
+                                    "minMember": 4,
+                                    "minResource": {
+                                      "cpu": "1200m",
+                                      "memory": "14Gi"
+                                    },
+                                    "nodeSelector": {
+                                      "NodeGroupType": "SparkComputeOptimized",
+                                      "karpenter.sh/capacity-type": "spot"
+                                    },
+                                    "tolerations": [{"key": "spark-compute-optimized", "operator": "Exists", "effect": "NoSchedule"}]
+                                }]
                           executor:
                             podSecurityContext:
                               fsGroup: 185
@@ -212,8 +212,8 @@ spec:
                             serviceAccount: spark-team-a
                             labels:
                               version: 3.2.1
-                            # annotations:
-                            #  yunikorn.apache.org/task-group-name: "spark-executor"
+                            annotations:
+                              yunikorn.apache.org/task-group-name: "spark-executor"
                             nodeSelector:
                               NodeGroupType: "SparkComputeOptimized"
                               karpenter.sh/capacity-type: "spot"
